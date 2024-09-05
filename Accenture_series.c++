@@ -117,12 +117,63 @@ int count(string s , int length){
         s[i] = tolower(s[i]);
     }
     if(int i = 0 ; i<length  ; i++){
-        if((str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u'))
+        if((s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u'))
       vowels++;
-      else if(str[i] >= 'a' && str[i] <= 'z')
+      else if(s[i] >= 'a' && s[i] <= 'z')
       consonant++;
       else if( s[i] = ''){
         whitespace++;
       }
+    }
+}
+
+//remove vowels
+string removevowels(string s){
+    for(int i = 0 ; i <s.length ; i++){
+        if(s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u' || s[i] == 'A' || s[i] == 'E' || s[i] == 'I' || s[i] == 'O' || s[i] == 'U')
+            {
+                s = s.substr(0 , i) + s.substr( i +1);
+                i--
+            }
+    }
+    return s;
+}
+
+//reverse the string
+//input : hello ram
+//output : mar olleh
+
+void reverse(string &s , int i , int j){
+    char temp = s[i];
+    s[i] = s[j];
+    s[j] = temp;
+}
+
+void reversestring(string &s){
+    int i = 0 ;
+    int j = s.length()-1;
+    while( i < j){
+        reverse(s , i , j);
+        i++;
+        j--;
+    }
+
+}
+
+//calculate frequency of character in a string
+
+int coutfrequency( string s ){
+    sort(s.begin() , s.end());
+    char ch = s[0];
+    int count = 0 ;
+    for(int i = 0 ; i<s.length() ; i++){
+        if( s[i] == ch){
+            count ++;
+        }
+        else{
+            cout << ch << " ";
+            count = 1 ;
+            ch = s[i]; 
+        }
     }
 }
